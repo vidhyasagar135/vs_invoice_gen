@@ -14,15 +14,37 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors({
-    origin: [
-        "https://vs-invoice-gen.onrender.com",     // Render frontend (if you host frontend here)
-        "https://vs-invoice-gen.vercel.app",      // Vercel frontend
-        "http://localhost:5173"                   // Local development (Vite)
-    ],
+
+// 🔴 THIS MUST COME BEFORE ANY ROUTES
+const allowedOrigins = [
+  "https://vs-invoice-gen.vercel.app", // your Vercel frontend
+  "http://localhost:5173"              // local dev (Vite)
+];
+
+app.use((req, res, next) => {
+  console.log("Origin:", req.headers.origin, "Method:", req.method, "Path:", req.path);
+  next();
+});
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow non-browser tools like Postman (no Origin header)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    credentials: true
-}));
+    credentials: true,
+  })
+);
+
+// ✅ Handle preflight for all routes
+app.options("*", cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
