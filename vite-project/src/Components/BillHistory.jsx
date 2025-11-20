@@ -183,7 +183,7 @@ const BillHistory = () => {
       setLoading(true);
       const token = localStorage.getItem('token');
 
-      const { data } = await axios.get('http://localhost:5000/api/invoice/search', {
+      const { data } = await axios.get('https://vs-invoice-gen.onrender.com/api/invoice/search', {
         headers: { Authorization: `Bearer ${token}` },
         params: { filterType, filterValue }
       });

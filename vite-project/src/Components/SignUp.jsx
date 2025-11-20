@@ -135,7 +135,7 @@ const SignUp = () => {
     }
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/signup', submitData, {
+      const res = await axios.post('https://vs-invoice-gen.onrender.com/api/auth/signup', submitData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

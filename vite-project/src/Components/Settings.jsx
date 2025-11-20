@@ -39,7 +39,7 @@ const Settings = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        "http://localhost:5000/api/auth/change-password",
+        "https://vs-invoice-gen.onrender.com/api/auth/change-password",
         {
           currentPassword: passwords.current,
           newPassword: passwords.new,
@@ -62,7 +62,7 @@ const Settings = () => {
     setDeactivateError(null);
     try {
       const token = localStorage.getItem("token");
-      await axios.delete("http://localhost:5000/api/auth/deactivate", {
+      await axios.delete("https://vs-invoice-gen.onrender.com/api/auth/deactivate", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

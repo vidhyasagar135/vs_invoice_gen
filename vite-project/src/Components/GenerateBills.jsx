@@ -16,7 +16,7 @@ const GenerateBills = () => {
       if (!token) return;
 
       try {
-        const response = await fetch('http://localhost:5000/api/auth/profile', {
+        const response = await fetch('https://vs-invoice-gen.onrender.com/api/auth/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
@@ -100,7 +100,7 @@ const GenerateBills = () => {
         </head>
         <body>
           <div class="header">
-            ${billData.businessDetails.logo ? `<img src="http://localhost:5000${billData.businessDetails.logo}" alt="Business Logo"/>` : ''}
+            ${billData.businessDetails.logo ? `<img src="https://vs-invoice-gen.onrender.com${billData.businessDetails.logo}" alt="Business Logo"/>` : ''}
             <h1>${billData.businessDetails.businessName || ''}</h1>
             <div class="details">
               <p>${billData.businessDetails.address || ''}</p>
@@ -166,7 +166,7 @@ const GenerateBills = () => {
       const token = localStorage.getItem('token');
       if (!token) return;
 
-      const response = await fetch('http://localhost:5000/api/invoices', {
+      const response = await fetch('https://vs-invoice-gen.onrender.com/api/invoices', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -209,7 +209,7 @@ const GenerateBills = () => {
       <div className="flex items-center mb-8 space-x-6 bg-white p-6 rounded-lg shadow-md">
         {businessDetails.logo && (
           <img
-            src={`http://localhost:5000${businessDetails.logo}`}
+            src={`https://vs-invoice-gen.onrender.com${businessDetails.logo}`}
             alt="Business Logo"
             className="w-24 h-24 object-contain rounded"
           />
