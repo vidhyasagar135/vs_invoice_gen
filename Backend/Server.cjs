@@ -19,7 +19,7 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/businessApp', {
+mongoose.connect('mongodb+srv://nanividhyasagar123_db_user:Njed48BtcXLeAATF@cluster0.zf2vr1o.mongodb.net/?appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
