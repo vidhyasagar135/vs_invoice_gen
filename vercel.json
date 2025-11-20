@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> d788cc4 (Final update)
